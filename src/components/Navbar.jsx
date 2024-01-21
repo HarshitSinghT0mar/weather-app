@@ -1,14 +1,16 @@
 // Navbar.js
 import React from 'react';
+import { useAuth } from '../contexts/AuthContext';
 
 const Navbar = () => {
+    const {user,setUser}=useAuth()
   return (
     <nav className="bg-blue-500 p-4 text-white flex justify-between items-center">
       <div>
         <span className="text-lg font-bold">Weather App</span>
       </div>
       <div className="flex items-center">
-        <button className="text-white hover:text-gray-300 mr-4">Login</button>
+        <button className="text-white hover:text-gray-300 mr-4">{user? 'Logout': 'Login'}</button>
       
         <div className="relative ml-4">
           <input type="checkbox" id="toggle" className="hidden" />

@@ -1,18 +1,26 @@
 // src/components/LoginForm.js
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { userData } from "../userData";
 import { useAuth } from "../contexts/AuthContext";
+import axios from "axios";
+import { fetchData } from "../services/apiConfig";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [inputData, setInputData] = useState({
     username: "",
     password: "",
   });
-
+// const navigate=useNavigate()
   const [error, setError] = useState(null);
 
-  const { setUser } = useAuth();
+  const { setUser, user } = useAuth();
+  
+
+
+     
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,8 +40,9 @@ const Login = () => {
 
     if (loggedInUser) {
       const { name, username, city } = loggedInUser;
-      setUser({ name: name, username: username, city: city });
+      setUser({ name: name, username: username, city: city ,dark:false });
       setError(null);
+    //   navigate('/home')
     } else {
       setError("Invalid username or password. Please try again.");
     }
@@ -46,9 +55,7 @@ const Login = () => {
       <div className="bg-white p-8 rounded shadow-md w-96">
         <h2 className="text-2xl font-semibold mb-6">Login</h2>
         <form onSubmit={handleSubmit}>
-          {error && (
-            <div className="text-red-500 text-sm mb-4">{error}</div>
-          )}
+          {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
           <div className="mb-4">
             <label
               htmlFor="username"

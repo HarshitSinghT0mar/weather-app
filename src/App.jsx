@@ -1,25 +1,25 @@
-import { Suspense, useState } from 'react'
-import './App.css'
-import Dashboard from './components/Dashboard'
+import { Suspense, useState } from "react";
+import "./App.css";
 
-import Login from './components/Login'
-import Navbar from './components/Navbar'
-import Pages from './components/Pages/Pages'
+import Navbar from "./components/Navbar";
+
+import Routes from "./router/Pages";
+import Pages from "./router/Pages";
 
 function App() {
-const [dark, setDark]=useState(false)
+  const [dark, setDark] = useState(false);
 
   return (
-    <div className={`${dark ? 'bg-stone-800': 'bg-white'} w-full h-screen`}>
-    <Navbar setDark={setDark} dark={dark} />
-    <Suspense fallback={<p>Loading...</p>}>
+    <div className={`${dark ? "bg-stone-800" : "bg-white"} w-full h-screen`}>
+      <Navbar setDark={setDark} dark={dark} />
+      <Suspense fallback={<p>Loading...</p>}>
         <Pages />
       </Suspense>
-      
-    {/* <Dashboard dark={dark} />
+
+      {/* <Dashboard dark={dark} />
      <Login /> */}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

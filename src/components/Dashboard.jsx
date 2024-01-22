@@ -28,24 +28,26 @@ const Dashboard = ({ dark }) => {
         } shadow-lg rounded-lg p-8 max-w-md bg-cover bg-center`}
         style={{
           backgroundImage:
-            'url("https://images.unsplash.com/photo-1518467946652-b194dd6dd321?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
+            'url("https://images.unsplash.com/photo-1562930633-77503e17114a?q=80&w=1946&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
         }}
       >
         <div className="user flex items-center mb-4">
           <div className="info">
-            <h1 className="name text-2xl text-nowrap font-bold text-amber-100">
+            <h1 className="name text-2xl text-nowrap font-bold text-amber-900">
               {user.name}
             </h1>
-            <p className="username text-sm text-amber-300">@{user.username}</p>
+            <p className="username text-sm text-amber-700">
+              @{user.username}
+            </p>
           </div>
         </div>
         <div className="weather flex items-center">
           <div className="info">
-            <h2 className="city text-xl mb-2 font-semibold text-lime-200">
+            <h2 className="city text-xl mb-2 font-bold text-lime-800">
               {user.city}
             </h2>
 
-            <div className="details w-full flex flex-col gap-2 text-sm text-white">
+            <div className="details w-full flex flex-col gap-2 text-sm text-gray-800">
               <p className="temp font-bold">
                 Current Temperature: {weatherData?.temp} °C
               </p>

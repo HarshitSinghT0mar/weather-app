@@ -47,7 +47,7 @@ const Dashboard = ({ dark }) => {
               {user.city}
             </h2>
 
-            <div className="details w-full flex flex-col gap-2 text-sm text-gray-800">
+            <div className="details w-full flex flex-col gap-2 text-sm text-stone-950">
               <p className="temp font-bold">
                 Current Temperature: {weatherData?.temp} °C
               </p>

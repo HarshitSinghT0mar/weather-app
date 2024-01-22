@@ -1,20 +1,20 @@
 // Navbar.js
 import React from "react";
 import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ setDark, dark }) => {
   const { user, setUser } = useAuth();
-
+  const navigate = useNavigate();
   const toggleDarkMode = () => {
-    setDark(
-      !dark,
-      setUser((prev) => ({ ...prev, dark: dark }))
-    );
+    setDark((prev) => !prev);
   };
 
-  const logOutUser=()=>{
-    localStorage.removeItem('user')
-  }
+  const logOutUser = () => {
+    localStorage.removeItem("user");
+    setUser({ isAuthenticated: false });
+    navigate("/");
+  };
   return (
     <nav
       className={`${
@@ -25,8 +25,11 @@ const Navbar = ({ setDark, dark }) => {
         <span className="text-lg font-bold">Weather App</span>
       </div>
       <div className="flex items-center">
-        {user ? (
-          <button className="text-white hover:text-gray-300 mr-4" onClick={logOutUser}>
+        {user.isAuthenticated ? (
+          <button
+            className="text-white hover:text-gray-300 mr-4"
+            onClick={logOutUser}
+          >
             Logout
           </button>
         ) : (

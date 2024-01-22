@@ -1,10 +1,9 @@
 // src/components/LoginForm.js
 
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import { userData } from "../userData";
 import { useAuth } from "../contexts/AuthContext";
-import axios from "axios";
-import { fetchData } from "../services/apiConfig";
+
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -12,7 +11,7 @@ const Login = () => {
     username: "",
     password: "",
   });
-// const navigate=useNavigate()
+const navigate=useNavigate()
   const [error, setError] = useState(null);
 
   const { setUser, user } = useAuth();
@@ -40,9 +39,9 @@ const Login = () => {
 
     if (loggedInUser) {
       const { name, username, city } = loggedInUser;
-      setUser({ name: name, username: username, city: city ,dark:false });
+      setUser({ name: name, username: username, city: city  ,isAuthenticated: true});
       setError(null);
-    //   navigate('/home')
+      navigate('/home')
     } else {
       setError("Invalid username or password. Please try again.");
     }
@@ -52,7 +51,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="bg-white p-8 rounded shadow-md w-96">
+      <div className={` bg-white p-8 rounded shadow-md w-96`}>
         <h2 className="text-2xl font-semibold mb-6">Login</h2>
         <form onSubmit={handleSubmit}>
           {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
